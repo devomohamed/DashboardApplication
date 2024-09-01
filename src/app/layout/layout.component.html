@@ -1,0 +1,9 @@
+<app-header (showSidebar)="showSidebar = $event" [sidebar]="showSidebar"></app-header>
+<app-sidenav [showSidebar]="showSidebar" (eventShowing)="showSidebar = $event"></app-sidenav>
+
+<!-- Main Content Area -->
+<div class="layout-content">
+    <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>

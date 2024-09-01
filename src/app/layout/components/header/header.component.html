@@ -1,0 +1,13 @@
+<!-- Top Menu with Sidebar Toggle Button -->
+<p-menubar>
+    <ng-template pTemplate="start">
+      <button type="button" pButton icon="pi pi-bars" (click)="showSidebar.emit(!sidebar);sidebar = !sidebar"></button>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <!-- <p-toast /> -->
+      <button type="button" pButton icon="pi pi-user" class="p-button-text" (click)="menu.toggle($event)"></button>
+      <p-menu #menu [model]="items" [popup]="true" [style]="{'width':'10rem'}">
+        <button type="button" pButton icon="pi pi-user" class="p-button-text"></button>
+      </p-menu>
+    </ng-template>
+  </p-menubar>

@@ -1,0 +1,9 @@
+
+  <!-- Sidebar Component -->
+  <p-sidebar [(visible)]="showSidebar" position="left" [baseZIndex]="1000" [modal]="true" (onHide)="eventShowing.emit(!showSidebar)">
+    <h3>Menu</h3>
+    <ul>
+      <li (click)="eventShowing.emit(!showSidebar)"><a [routerLink]="['users']">Users</a></li>
+      <li (click)="eventShowing.emit(!showSidebar)"><a [routerLink]="['users','create']">Create User</a></li>
+    </ul>
+  </p-sidebar>

@@ -1,0 +1,112 @@
+<p-card header="{{isEditMode?'User Details':'Create User'}}" styleClass="mb-4">
+    <form [formGroup]="userForm" (ngSubmit)="onSave()">
+      <div class="p-fluid grid formgrid">
+        <!-- Name Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="name">Name</label>
+          <input id="name" pInputText formControlName="name" />
+          <small *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="p-error">Name is required.</small>
+        </div>
+  
+        <!-- Father's Name Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="father_name">Father's Name</label>
+          <input id="father_name" pInputText formControlName="father_name" />
+        </div>
+  
+        <!-- Grandfather's Name Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="grandfather_name">Grandfather's Name</label>
+          <input id="grandfather_name" pInputText formControlName="grandfather_name" />
+        </div>
+  
+        <!-- Family Branch Name Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="family_branch_name">Family Branch Name</label>
+          <input id="family_branch_name" pInputText formControlName="family_branch_name" />
+        </div>
+  
+        <!-- Tribe Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="tribe">Tribe</label>
+          <input id="tribe" pInputText formControlName="tribe" />
+        </div>
+       
+  
+        <!-- Gender Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="gender">Gender</label>
+          <p-dropdown formControlName="gender" optionLabel="name" [options]="gender" optionLabel="name" placeholder="Select a Gender"></p-dropdown>
+          <small *ngIf="userForm.controls['gender'].invalid && userForm.controls['gender'].touched" class="p-error">Gender is required.</small>
+        </div>
+
+         <!-- Country Field -->
+         <div class="field col-12 md:col-6 lg:col-4">
+            <label for="tribe">Country</label>
+            <p-dropdown formControlName="country_id" [options]="countries" optionLabel="name_en" placeholder="Select a Country" (onChange)="countryChange($event.value)"></p-dropdown>
+            <small *ngIf="userForm.controls['country_id'].invalid && userForm.controls['country_id'].touched" class="p-error">Gender is required.</small>
+          </div>
+  
+        <!-- Phone Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="phone">Phone</label>
+          <input id="phone" pInputText formControlName="phone" />
+          <small *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched" class="p-error">Phone is required.</small>
+          <small *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].value.length > 9" class="p-error">Maximum Length Phone Is 9.</small>
+          <small *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].value.length < 9" class="p-error">Minimum Length Phone Is 9.</small>
+        </div>
+
+        <!-- date_of_birth Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="date_of_birth">Pirth Date</label>
+          <p-calendar formControlName="date_of_birth" id="date_of_birth" dateFormat="yy-mm-dd"></p-calendar>
+          <small *ngIf="userForm.controls['date_of_birth'].invalid && userForm.controls['date_of_birth'].touched" class="p-error">Pirth Date is required.</small>
+        </div>
+
+        <!-- Email Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="email">Email</label>
+          <input id="email" pInputText formControlName="email" />
+          <small *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="p-error">Email is required.</small>
+        </div>
+
+        <!-- password Field -->
+        <div class="field col-12 md:col-6 lg:col-4" *ngIf="!isEditMode">
+          <label for="password">Password</label>
+          <p-password id="password" formControlName="password" [feedback]="false"[toggleMask]="true"></p-password>
+          <small *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="p-error">Password is required.</small>
+        </div>
+
+        <!-- password_confirmation Field -->
+        <div class="field col-12 md:col-6 lg:col-4" *ngIf="!isEditMode" >
+          <label for="password_confirmation">Rewrite Password</label>
+          <p-password id="password_confirmation" formControlName="password_confirmation" [feedback]="false"[toggleMask]="true"></p-password>
+          <small *ngIf="userForm.controls['password_confirmation'].invalid && userForm.controls['password_confirmation'].touched" class="p-error">Password is required.</small>
+          <small *ngIf="userForm.controls['password_confirmation'].touched && userForm.controls['password_confirmation'].value != userForm.controls['password'].value" class="p-error">Password is Not Equal</small>
+        </div>
+  
+        <!-- User Type Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="type">Type</label>
+          <p-dropdown formControlName="type" [options]="userType" optionLabel="name" placeholder="Select a Type"></p-dropdown>
+          <small *ngIf="userForm.controls['type'].invalid && userForm.controls['type'].touched" class="p-error">Type is required.</small>
+        </div>
+  
+        <!-- Active Status Field -->
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="active">Active</label>
+          <p-toggleButton formControlName="active" onLabel="Active" offLabel="In Active"></p-toggleButton>
+        </div>
+  
+        <!-- Buttons for Save and Cancel -->
+        <div class="field col-12">
+          <div class="flex col-4">
+            <button *ngIf="isEditMode" pButton type="submit" label="{{isEditMode?'Save':'Add User'}}" icon="pi pi-check" [disabled]="userForm.invalid" class="mr-2"></button>
+            <button *ngIf="!isEditMode" pButton type="submit" label="{{isEditMode?'Save':'Add User'}}" icon="pi pi-check" [disabled]="userForm.invalid || userForm.controls['password_confirmation'].value != userForm.controls['password'].value" class="mr-2"></button>
+            <button pButton type="button" label="Cancel" icon="pi pi-times" class="p-button-secondary" (click)="onCancel()"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </p-card>
+  

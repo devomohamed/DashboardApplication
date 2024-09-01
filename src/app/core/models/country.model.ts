@@ -1,0 +1,30 @@
+export interface Country {
+    id:              number;
+    name_en:         string;
+    name_ar:         null;
+    iso3:            string;
+    numeric_code:    string;
+    iso2:            string;
+    phonecode:       string;
+    capital:         string;
+    currency:        string;
+    currency_name:   string;
+    currency_symbol: string;
+    tld:             string;
+    native:          string;
+    region:          string;
+    subregion:       string;
+    timezones:       string;
+    translations:    string;
+    latitude:        string;
+    longitude:       string;
+    emoji:           string;
+    emojiU:          string;
+    created_at:      Date;
+    updated_at:      Date;
+    flag:            string;
+    wikiDataId:      string;
+    is_active:       number;
+    deleted_at:      Date;
+    name:            null;
+}

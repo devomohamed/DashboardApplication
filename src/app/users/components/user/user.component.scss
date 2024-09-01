@@ -1,0 +1,11 @@
+/* Styling for form fields */
+.field {
+    margin-bottom: 1rem;
+  }
+  
+  /* Adjust the grid layout for smaller screens */
+  @media screen and (max-width: 768px) {
+    .formgrid > div {
+      width: 100% !important;
+    }
+  }
