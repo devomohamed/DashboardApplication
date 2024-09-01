@@ -1,27 +1,138 @@
-# DashboardApplication
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.11.
+# **Dashboard Application**
 
-## Development server
+This project is a Dashboard Application built using Angular 16+. It demonstrates a well-structured modular architecture, adhering to best practices in component design, routing, services, state management with NgRx, and API integration.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## **Table of Contents**
 
-## Code scaffolding
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technical Requirements](#technical-requirements)
+- [Setup and Installation](#setup-and-installation)
+- [Folder Structure](#folder-structure)
+- [Usage](#usage)
+- [State Management](#state-management)
+- [API Integration](#api-integration)
+- [Additional Features](#additional-features)
+- [Contributing](#contributing)
+- [License](#license)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## **Project Overview**
 
-## Build
+The Dashboard Application is designed to manage user authentication and user data. It consists of two main modules:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Auth Module**: Handles user authentication (login).
+2. **Users Module**: Manages user data, including listing, creating, updating, deleting, and viewing user profiles.
 
-## Running unit tests
+## **Features**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Auth Module**:
+  - Login form with username and password fields.
+  - Authentication against a real endpoint.
+  - Error messages for invalid login attempts.
+  - Redirection to the Users module upon successful login.
 
-## Running end-to-end tests
+- **Users Module**:
+  - List users with functionalities to sort, filter, create, update, delete, and toggle activation status.
+  - User profile view and edit capabilities.
+  - Form validation and error handling for user creation and updates.
+  
+- **State Management**:
+  - State management using NgRx for handling authentication and user data.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **API Integration**:
+  - Integrated with provided API endpoints using Angular services.
 
-## Further help
+## **Technical Requirements**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Angular 16+
+- Angular CLI for project setup and management
+- Lazy loading for modules
+- Angular Reactive Forms for handling forms
+- Angular Material for UI components and layout
+- SOLID principles for clean code
+- NgRx for state management
+
+## **Setup and Installation**
+
+To set up and run this project locally, follow these steps:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <repository-url>
+   cd dashboard-app
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server:**
+
+   ```bash
+   ng serve
+   ```
+
+   The application will be available at `http://localhost:4200/`.
+
+4. **Environment Configuration:**
+
+   Make sure to configure your environment files (`src/environments`) with the correct API URLs provided in the Postman environment.
+
+## **Folder Structure**
+
+The folder structure of the application is as follows:
+
+```
+/src
+  /app
+    /core                   // Core services, interceptors, and guards
+    /shared                 // Shared modules, components, and utilities
+    /auth                   // Authentication module
+    /users                  // Users module
+    /state                  // Root state management
+    /environments           // Environment configuration
+  /assets                   // Images, styles, etc.
+  /environments             // Environment configuration files
+```
+
+## **Usage**
+
+- **Login**: Use the login page to authenticate users.
+- **User Management**: After logging in, you can view the list of users, create new users, edit existing users, and delete or deactivate users.
+- **User Profile**: View detailed information for individual users and navigate to the edit form.
+
+## **State Management**
+
+The application uses NgRx for state management:
+
+- **Auth State**: Manages authentication status and user details.
+- **User State**: Manages user list, sorting, filtering, and individual user details.
+
+NgRx is configured to handle asynchronous operations and manage application state in a reactive way.
+
+## **API Integration**
+
+The application integrates with provided API endpoints for:
+
+- User authentication (login).
+- Fetching, creating, updating, and deleting user data.
+
+Ensure to use the Postman collection and environment to test the APIs and endpoints.
+
+## **Additional Features**
+
+- **Responsive Design**: The application uses Angular Material components for a modern and responsive UI.
+- **Error Handling**: Comprehensive error handling and validation throughout the application.
+- **Loading Indicators**: Displays loading indicators for API calls and data fetching.
+
+## **Contributing**
+
+If you wish to contribute to the project, please fork the repository and submit a pull request.
+
+## **License**
+
+This project is licensed under the MIT License.
