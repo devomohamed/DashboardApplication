@@ -51,9 +51,9 @@
         <div class="field col-12 md:col-6 lg:col-4">
           <label for="phone">Phone</label>
           <input id="phone" pInputText formControlName="phone" />
-          <small *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched" class="p-error">Phone is required.</small>
-          <small *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].value.length > 9" class="p-error">Maximum Length Phone Is 9.</small>
-          <small *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].value.length < 9" class="p-error">Minimum Length Phone Is 9.</small>
+          <!-- <small *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched" class="p-error">Phone is required.</small> -->
+          <small *ngIf="userForm.controls['phone'].touched && userForm.controls['phone'].invalid && userForm.controls['phone'].value.length > 9" class="p-error">Maximum Length Phone Is 9.</small>
+          <small *ngIf="userForm.controls['phone'].touched && userForm.controls['phone'].invalid && userForm.controls['phone'].value.length < 9" class="p-error">Minimum Length Phone Is 9.</small>
         </div>
 
         <!-- date_of_birth Field -->
@@ -100,9 +100,9 @@
   
         <!-- Buttons for Save and Cancel -->
         <div class="field col-12">
-          <div class="flex col-4">
-            <button *ngIf="isEditMode" pButton type="submit" label="{{isEditMode?'Save':'Add User'}}" icon="pi pi-check" [disabled]="userForm.invalid" class="mr-2"></button>
-            <button *ngIf="!isEditMode" pButton type="submit" label="{{isEditMode?'Save':'Add User'}}" icon="pi pi-check" [disabled]="userForm.invalid || userForm.controls['password_confirmation'].value != userForm.controls['password'].value" class="mr-2"></button>
+          <div class="flex col-12 md:col-6 lg:col-4">
+            <button *ngIf="isEditMode" pButton type="submit" label="Save" icon="pi pi-check" [disabled]="userForm.invalid" class="mr-2"></button>
+            <button *ngIf="!isEditMode" pButton type="submit" label="Add User" icon="pi pi-user-plus" [disabled]="userForm.invalid || userForm.controls['password_confirmation'].value != userForm.controls['password'].value" class="mr-2"></button>
             <button pButton type="button" label="Cancel" icon="pi pi-times" class="p-button-secondary" (click)="onCancel()"></button>
           </div>
         </div>

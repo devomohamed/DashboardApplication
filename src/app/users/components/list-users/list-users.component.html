@@ -1,14 +1,69 @@
-<p-table [value]="users" [paginator]="true" [rows]="10" [filterDelay]="500">
+<div class="my-3">
+  <h3>Users</h3>
+<p-table [value]="users" [paginator]="true" [rows]="10" [filterDelay]="500" [loading]="loading" >
   <ng-template pTemplate="caption">
-    <div class="table-header">
-      <button pButton pRipple label="Create User" icon="pi pi-plus" [routerLink]="['create']" class="p-button-success"></button>
-      <!-- <div class="filter flex">
-        <form [formGroup]="filterFRM">
-          <p-dropdown formControlName="selectedCity" [options]="cities" optionLabel="name" placeholder="Select a City"></p-dropdown>
-      </form>
-      </div> -->
-    </div>
-</ng-template>
+    <div class="table-header flex justify-content-between align-items-center flex-wrap">
+      <button
+        pButton
+        pRipple
+        label="Create User"
+        icon="pi pi-plus"
+        [routerLink]="['create']"
+        class="p-button-success"
+        style="height: fit-content;"
+      ></button>
+      <div class="filter p-fluid grid formgrid w-9">
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="user-type">User Type</label>
+          <p-dropdown
+          id="user-type"
+          [options]="userTypes"
+          [(ngModel)]="selectedType"
+          placeholder="Filter by Type"
+          (onChange)="filterUsers(0)"
+          class="mx-2"
+        ></p-dropdown>
+        </div>
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="gender">Gender</label>
+          <p-dropdown
+          id="gender"
+          [options]="genders"
+          [(ngModel)]="selectedGender"
+          placeholder="Filter by Gender"
+          (onChange)="filterUsers(0)"
+          class="mx-2"
+        ></p-dropdown>
+        </div>
+        <div class="field col-12 md:col-6 lg:col-4">
+          <label for="primuim">Primuim Option</label>
+          <p-dropdown
+          id="primuim"
+          [options]="premiumOptions"
+          [(ngModel)]="selectedIsPremium"
+          placeholder="Filter by Premium Status"
+          (onChange)="filterUsers(0)"
+          
+          class="mx-2"
+        ></p-dropdown>
+        
+      </div>
+      </div>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-filter-slash"
+        class="p-button-help"
+        style="height: fit-content;"
+        (click)="resetFilters()"
+        [disabled]="!selectedIsPremium && !selectedGender && !selectedType"
+      ></button>
+      </div>
+          
+        
+        
+        
+  </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th>Name</th>
@@ -27,4 +82,10 @@
         </td>
       </tr>
     </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+          <td colspan="3" class="p-text-center">No Data</td>
+      </tr>
+  </ng-template>
   </p-table>
+</div>

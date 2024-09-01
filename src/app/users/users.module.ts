@@ -18,6 +18,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { PasswordModule } from 'primeng/password';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 
@@ -41,7 +42,8 @@ import { PasswordModule } from 'primeng/password';
     DialogModule,
     DropdownModule,
     CalendarModule,
-    PasswordModule
+    PasswordModule,
+    InputSwitchModule
   ],
   providers:[{ provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }]
 })

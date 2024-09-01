@@ -18,6 +18,9 @@ export class UserService {
   getUsers(): Observable<RsponseData<IUser[]>> {
     return this.http.get<RsponseData<IUser[]>>(`${this.apiUrl}/users?return_all=1`);
   }
+  filterUsers(queryParam:string): Observable<RsponseData<IUser[]>> {
+    return this.http.get<RsponseData<IUser[]>>(`${this.apiUrl}/users?${queryParam}`);
+  }
 
   getUser(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/users/${id}`);
