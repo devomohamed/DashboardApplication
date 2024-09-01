@@ -98,7 +98,7 @@ export class ListUsersComponent implements OnInit , OnDestroy {
       this.loading = false
     })
 
-    console.log(this.paramsConverter(params));
+    // console.log(this.paramsConverter(params));
     
   }
 

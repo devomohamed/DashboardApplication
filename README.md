@@ -15,7 +15,6 @@ This project is a Dashboard Application built using Angular 16+. It demonstrates
 - [API Integration](#api-integration)
 - [Additional Features](#additional-features)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## **Project Overview**
 
@@ -60,7 +59,7 @@ To set up and run this project locally, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/devomohamed/DashboardApplication
    cd dashboard-app
    ```
 
@@ -90,7 +89,7 @@ The folder structure of the application is as follows:
 /src
   /app
     /core                   // Core services, interceptors, and guards
-    /shared                 // Shared modules, components, and utilities
+    /layout                 // Layout Module Wrap Application
     /auth                   // Authentication module
     /users                  // Users module
     /state                  // Root state management
@@ -127,12 +126,8 @@ Ensure to use the Postman collection and environment to test the APIs and endpoi
 
 - **Responsive Design**: The application uses Angular Material components for a modern and responsive UI.
 - **Error Handling**: Comprehensive error handling and validation throughout the application.
-- **Loading Indicators**: Displays loading indicators for API calls and data fetching.
 
 ## **Contributing**
 
 If you wish to contribute to the project, please fork the repository and submit a pull request.
 
-## **License**
-
-This project is licensed under the MIT License.
